@@ -1,7 +1,62 @@
 import torch
 
+def train_model_single(dataloader, model, criterion, optimizer):
+    model.train()
+    running_loss = 0.0
+    y_pred = []
+    y_true = []
 
-def train_model(dataloader, model, criterion_cat, criterion_cont, optimizer):
+    device = next(model.parameters()).device
+    for index, batch in enumerate(dataloader, 1):
+        inputs, labels, _, _ = batch
+
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        optimizer.zero_grad()
+        outputs = model(inputs)
+
+        loss = criterion(outputs, labels)
+        _, preds = torch.max(outputs, 1)
+
+        loss.backward()
+        optimizer.step()
+
+        running_loss += loss.data.item()
+
+        y_pred.append(preds.cpu().numpy())
+        y_true.append(labels.cpu().numpy())
+
+    return running_loss / index, (y_true, y_pred)
+
+
+def eval_model_single(dataloader, model, criterion):
+    model.eval()
+    running_loss = 0.0
+    y_pred = []
+    y_true = []
+
+    device = next(model.parameters()).device
+    with torch.no_grad():
+        for index, batch in enumerate(dataloader, 1):
+            inputs, labels, _, _ = batch
+
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+
+            outputs = model(inputs)
+
+            loss = criterion(outputs, labels)
+            _, preds = torch.max(outputs, 1)
+
+            y_pred.append(preds.cpu().numpy())
+            y_true.append(labels.cpu().numpy())
+
+            running_loss += loss.data.item()
+
+    return running_loss / index, (y_true, y_pred)
+    
+def train_model_multi(dataloader, model, criterion_cat, criterion_cont, optimizer, gcn=False):
     model.train()
     running_loss = 0.0
     running_loss_cat = 0.0
@@ -19,7 +74,11 @@ def train_model(dataloader, model, criterion_cat, criterion_cont, optimizer):
         inp = inp.to(device)
 
         optimizer.zero_grad()
-        outputs_cat, outputs_cont = model(inputs, inp)
+
+        if gcn:
+            outputs_cat, outputs_cont = model(inputs, inp)
+        else:
+            outputs_cat, outputs_cont = model(inputs)
 
         loss_cat = criterion_cat(outputs_cat, labels)
         loss_cont = criterion_cont(outputs_cont.double(), labels_cont.double())
@@ -39,7 +98,7 @@ def train_model(dataloader, model, criterion_cat, criterion_cont, optimizer):
     return running_loss / index, running_loss_cat / index, running_loss_cont / index, (y_true, y_pred)
 
 
-def eval_model(dataloader, model, criterion_cat, criterion_cont):
+def eval_model_multi(dataloader, model, criterion_cat, criterion_cont, gcn=False):
     model.eval()
     running_loss = 0.0
     running_loss_cat = 0.0
@@ -57,7 +116,10 @@ def eval_model(dataloader, model, criterion_cat, criterion_cont):
             labels_cont = labels_cont.to(device)
             inp = inp.to(device)
 
-            outputs_cat, outputs_cont = model(inputs, inp)
+            if gcn:
+                outputs_cat, outputs_cont = model(inputs, inp)
+            else:
+                outputs_cat, outputs_cont = model(inputs)
 
             loss_cat = criterion_cat(outputs_cat, labels)
             loss_cont = criterion_cont(

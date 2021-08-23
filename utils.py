@@ -76,3 +76,9 @@ def save_cm_plot(cm, target_names, output_name, title='Confusion matrix', cmap=N
         accuracy, misclass))
 
     plt.savefig(output_name)
+
+
+
+def get_lr(optimizer):
+    for param_group in optimizer.param_groups:
+        return param_group['lr']

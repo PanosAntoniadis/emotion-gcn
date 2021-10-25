@@ -1,3 +1,5 @@
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/exploiting-emotional-dependencies-with-graph/facial-expression-recognition-on-affectnet)](https://paperswithcode.com/sota/facial-expression-recognition-on-affectnet?p=exploiting-emotional-dependencies-with-graph)
+
 # Emotion-GCN: Exploiting Emotional Dependencies with Graph Convolutional Networks for Facial Expression Recognition
 
 This repository hosts the official PyTorch implementation of the paper: "Exploiting Emotional Dependencies with Graph Convolutional Networks for Facial Expression Recognition".

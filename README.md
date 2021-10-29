@@ -61,7 +61,7 @@ optional arguments:
 
 ## Pre-trained Models
 
-We also provide weights for our Emotion-GCN models on AffectNet and Aff-Wild2. Our models achieves 66.46% accuracy on the categorical model of AffectNet outperforming the performance of the current state-of-the-art methods for discrete FER. You can download the pre-trained models [here](https://drive.google.com/drive/folders/1BUUOKelxNtkIETrb93nb6VIP-J4bT7Os?usp=sharing).
+We also provide weights for our Emotion-GCN models on AffectNet and Aff-Wild2. Our best model achieves 66.46% accuracy on the categorical model of AffectNet outperforming the performance of the current state-of-the-art methods for discrete FER. You can download the pre-trained models [here](https://drive.google.com/drive/folders/1BUUOKelxNtkIETrb93nb6VIP-J4bT7Os?usp=sharing).
 
 ## Citation
 Available soon.

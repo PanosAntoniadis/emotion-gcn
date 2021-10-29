@@ -17,6 +17,7 @@ Authored by: Panagiotis Antoniadis, Panagiotis Paraskevas Filntisis, Petros Mara
 ## Preparation
 
 - Download the dataset. [[AffectNet]](http://mohammadmahoor.com/affectnet/) [[Aff-Wild2]](https://ibug.doc.ic.ac.uk/resources/aff-wild2/)
+- Download the 300-dimensional GloVe vectors trained on the Wikipedia dataset from [here](https://drive.google.com/file/d/1d4A5LwOXTvtNBpzCTMNoUIc3TmlWs6R-/view?usp=sharing).
 - Run `pickle_annotations_affectnet.py` and `pickle_annotations_affwild2.py` to prepare each dataset.
 
 ## Training

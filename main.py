@@ -1,18 +1,18 @@
 import os
+import torch
 import argparse
 import numpy as np
-
-import torch
-from torchvision import transforms
 import torchvision.models as models
+
+from torchvision import transforms
 from torch.utils.data import DataLoader
 from sklearn.metrics import accuracy_score
 
 from ccc import CCC_loss
 from utils import get_lr
-from models import Emotion_GCN, multi_densenet, BReGNeXt_GCN
-from breg_next import BReGNeXt, multi_BReGNeXt
 from aligner import FaceAligner
+from breg_next import BReGNeXt, multi_BReGNeXt
+from models import Emotion_GCN, multi_densenet, BReGNeXt_GCN
 from dataloading import AffectNet_dataset, Affwild2_dataset
 from training import train_model_single, eval_model_single, train_model_multi, eval_model_multi
 
@@ -22,7 +22,7 @@ from training import train_model_single, eval_model_single, train_model_multi, e
 
 # Define argument parser
 parser = argparse.ArgumentParser(
-    description='Facial expression recognition using Emotion-GCN')
+    description='Train Facial Expression Recognition model using Emotion-GCN')
 
 # Data loading
 parser.add_argument('--image_dir',
@@ -285,7 +285,6 @@ def main():
             print('Early stopping!')
             print("Model saved succesfully to {}".format(output_file))
             break
-    
 
 if __name__ == '__main__':
     main()

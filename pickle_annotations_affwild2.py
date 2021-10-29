@@ -1,15 +1,10 @@
 import os
 import glob
-import math
-import time
 import pickle
 import argparse
 import numpy as np
-import glob
-import matplotlib.pyplot as plt
-import cv2
 
-from dataloading_affwild2 import Affwild2_annotation
+from dataloading import Affwild2_annotation
 
 def frames_to_label_cat(expression, frames):
     frames_ids = [int(frame.split('/')[-1].split('.')[0]) - 1 for frame in frames]

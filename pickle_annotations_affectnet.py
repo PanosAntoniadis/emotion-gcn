@@ -6,7 +6,6 @@ import pandas as pd
 
 from dataloading import AffectNet_annotation
 
-
 def get_eyes(landmarks):
     landmarks = landmarks.split(';')
     left = landmarks[36*2:42*2]

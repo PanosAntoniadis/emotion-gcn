@@ -3,8 +3,7 @@
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
-
-# Code from https://github.com/behzadhsni/BReG-NeXt
+# Code taken from https://github.com/behzadhsni/BReG-NeXt
 
 import torch
 

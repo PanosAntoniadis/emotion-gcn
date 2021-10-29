@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
-from PIL import Image
 
+from PIL import Image
 
 class FaceAligner:
     """A class that aligns a given facial image based on the position of the eyes."""
@@ -23,8 +23,8 @@ class FaceAligner:
         angle = self.angle(left_eye_center, right_eye_center)
         x1, y1 = left_eye_center
         x2, y2 = right_eye_center
-        xc = (x1 + x2) / 2
-        yc = (y1 + y2) / 2
+        xc = (x1 + x2) // 2
+        yc = (y1 + y2) // 2
         M = cv2.getRotationMatrix2D((xc, yc), angle, 1)
         rotated = cv2.warpAffine(
             image, M,  (image.shape[0], image.shape[1]), flags=cv2.INTER_CUBIC)

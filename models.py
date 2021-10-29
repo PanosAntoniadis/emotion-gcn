@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
-import torchvision.models as models
 import torch.nn.functional as F
+import torchvision.models as models
 
 from torch.nn import Parameter
-from gcn import GraphConvolution
 from breg_next import BReGNeXt
+from gcn import GraphConvolution
 from utils import gen_A, gen_adj
 
 class Emotion_GCN(nn.Module):
@@ -24,14 +24,6 @@ class Emotion_GCN(nn.Module):
         self.gc1 = GraphConvolution(in_channel, 512)
         self.gc2 = GraphConvolution(512, 1024)
         self.relu = nn.LeakyReLU(0.2)
-        
-        #self.gc = GraphConvolution(in_channel, 1024) # 1 layer
-
-        #self.gc1 = GraphConvolution(in_channel, 512) # 3 layers
-        #self.gc2 = GraphConvolution(512, 512)
-        #self.gc3 = GraphConvolution(512, 1024)
-        #self.relu = nn.LeakyReLU(0.2)
-
         _adj = gen_A(adj_file)
         self.A = Parameter(torch.from_numpy(_adj).float())
         print(self.A)
@@ -47,15 +39,6 @@ class Emotion_GCN(nn.Module):
         x = self.gc1(inp, adj)
         x = self.relu(x)
         x = self.gc2(x, adj)
-
-        #x = self.gc(inp, adj) # 1 layer
-        
-        #x = self.gc1(inp, adj) # 3 layers
-        #x = self.relu(x)
-        #x = self.gc2(x, adj)
-        #x = self.relu(x)
-        #x = self.gc3(x, adj)
-
         x = x.transpose(0, 1)
         x = torch.matmul(feature, x)
 

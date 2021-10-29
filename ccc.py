@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 class CCC_loss(nn.Module):
     """Concordance Correlation Coefficient"""
 

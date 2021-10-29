@@ -1,7 +1,7 @@
 import os
-import pickle
 import cv2
 import torch
+import pickle
 import numpy as np
 
 from PIL import Image

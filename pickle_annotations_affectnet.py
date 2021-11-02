@@ -55,5 +55,5 @@ if __name__ == '__main__':
 
     data = {'train': data_train, 'val': data_val}
 
-    with open('data.pkl', "wb") as w:
+    with open('data_affectnet.pkl', "wb") as w:
         pickle.dump(data, w)

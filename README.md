@@ -64,7 +64,15 @@ optional arguments:
 We also provide weights for our Emotion-GCN models on AffectNet and Aff-Wild2. Our best model achieves 66.46% accuracy on the categorical model of AffectNet outperforming the performance of the current state-of-the-art methods for discrete FER. You can download the pre-trained models [here](https://drive.google.com/drive/folders/1BUUOKelxNtkIETrb93nb6VIP-J4bT7Os?usp=sharing).
 
 ## Citation
-Available soon.
+```
+@inproceedings{9667014,
+  author={Antoniadis, Panagiotis and Filntisis, Panagiotis Paraskevas and Maragos, Petros},
+  booktitle={2021 16th IEEE International Conference on Automatic Face and Gesture Recognition (FG 2021)}, 
+  title={Exploiting Emotional Dependencies with Graph Convolutional Networks for Facial Expression Recognition}, 
+  year={2021},
+  pages={1-8},
+  doi={10.1109/FG52635.2021.9667014}}
+```
 
 ## Contact
 For questions feel free to open an issue.
